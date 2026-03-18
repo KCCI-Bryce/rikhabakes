@@ -279,5 +279,108 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  // D. Login Modal
+  const loginToggle = document.getElementById('login-toggle')
+  const loginClose = document.getElementById('login-close')
+  const loginPopup = document.getElementById('login-popup')
+  
+  const loginTitle = document.getElementById('login-title')
+  const loginSubtitle = document.getElementById('login-subtitle')
+  const loginEmail = document.getElementById('login-email') as HTMLInputElement
+  const loginPassword = document.getElementById('login-password') as HTMLInputElement
+  const loginSubmitBtn = document.getElementById('login-submit-btn')
+  const loginError = document.getElementById('login-error')
+  const registerToggleBtn = document.getElementById('register-toggle-btn')
+
+  let isLoginMode = true;
+
+  if (loginToggle && localStorage.getItem('rikhabakes_token')) {
+    loginToggle.textContent = 'Dashboard';
+  }
+
+  if (loginToggle && loginClose && loginPopup && loginSubmitBtn && registerToggleBtn) {
+    const loginTl = gsap.timeline({ paused: true, reversed: true })
+    
+    loginTl.to(loginPopup, { autoAlpha: 1, duration: 0.5, ease: "power2.inOut" })
+           .fromTo([loginTitle, loginSubtitle, loginEmail, loginPassword, loginSubmitBtn, loginError, registerToggleBtn], 
+              { y: 30, opacity: 0 }, 
+              { y: 0, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power3.out" }, "-=0.2")
+
+    loginToggle.addEventListener('click', () => {
+      if (localStorage.getItem('rikhabakes_token')) {
+        window.location.href = '/dashboard.html';
+      } else {
+        lenis.stop();
+        loginTl.play();
+      }
+    })
+
+    loginClose.addEventListener('click', () => {
+      loginTl.reverse()
+      lenis.start()
+    })
+
+    registerToggleBtn.addEventListener('click', () => {
+      isLoginMode = !isLoginMode;
+      if (loginTitle && loginSubmitBtn) {
+        loginTitle.textContent = isLoginMode ? 'Client Access' : 'Create Account';
+        loginSubmitBtn.textContent = isLoginMode ? 'Sign In' : 'Register';
+      }
+      registerToggleBtn.textContent = isLoginMode ? 'Create Account Instead' : 'Have an account? Sign In';
+      if (loginError) {
+        loginError.style.color = '#ff5555';
+        loginError.textContent = '';
+      }
+    })
+
+    loginSubmitBtn.addEventListener('click', async () => {
+      const email = loginEmail?.value;
+      const password = loginPassword?.value;
+      
+      if (!email || !password) {
+        if (loginError) loginError.textContent = "Email and password required.";
+        return;
+      }
+      
+      const endpoint = isLoginMode ? '/api/login' : '/api/register';
+      
+      try {
+        if (loginSubmitBtn) loginSubmitBtn.textContent = "Processing...";
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          localStorage.setItem('rikhabakes_token', data.token);
+          if (loginError) {
+             loginError.style.color = '#55ff55';
+             loginError.textContent = "Success! Access granted.";
+          }
+          loginToggle.textContent = 'Dashboard';
+          setTimeout(() => {
+            loginTl.reverse();
+            lenis.start();
+            if (loginSubmitBtn) loginSubmitBtn.textContent = isLoginMode ? 'Sign In' : 'Register';
+          }, 1500);
+        } else {
+          if (loginError) {
+             loginError.style.color = '#ff5555';
+             loginError.textContent = data.detail || "Authentication failed.";
+          }
+          if (loginSubmitBtn) loginSubmitBtn.textContent = isLoginMode ? 'Sign In' : 'Register';
+        }
+      } catch (e) {
+        if (loginError) {
+           loginError.style.color = '#ff5555';
+           loginError.textContent = "Server unreachable.";
+        }
+        if (loginSubmitBtn) loginSubmitBtn.textContent = isLoginMode ? 'Sign In' : 'Register';
+      }
+    })
+  }
+
 })
 

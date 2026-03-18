@@ -1,0 +1,283 @@
+import './style.css'
+import Lenis from 'lenis'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Register ScrollTrigger
+gsap.registerPlugin(ScrollTrigger)
+
+// Initialize Lenis for buttery-smooth inertial scrolling
+const lenis = new Lenis({
+  duration: 1.5, // slightly slower, more elegant
+  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  touchMultiplier: 2,
+})
+
+// Synchronize Lenis with GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000)
+})
+gsap.ticker.lagSmoothing(0)
+
+// ------------------------------------------------------------------
+// Custom Cursor
+// ------------------------------------------------------------------
+const cursorDot = document.querySelector('.cursor-dot') as HTMLElement;
+const cursorOutline = document.querySelector('.cursor-outline') as HTMLElement;
+
+window.addEventListener('mousemove', (e) => {
+  const posX = e.clientX;
+  const posY = e.clientY;
+
+  gsap.to(cursorDot, { x: posX, y: posY, duration: 0.1, ease: 'power2.out' });
+  gsap.to(cursorOutline, { x: posX, y: posY, duration: 0.8, ease: 'power2.out' });
+});
+
+document.querySelectorAll('a, .btn').forEach((el) => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(cursorOutline, { scale: 1.5, backgroundColor: 'rgba(255,255,255,0.1)', duration: 0.3 });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(cursorOutline, { scale: 1, backgroundColor: 'transparent', duration: 0.3 });
+  });
+});
+
+// ------------------------------------------------------------------
+// Animations Setup
+// ------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. Hero Entrance Text Lines
+  const heroLines = document.querySelectorAll('.gsap-hero-title .line-inner')
+  gsap.fromTo(heroLines, 
+    { yPercent: 120 }, 
+    { yPercent: 0, duration: 1.5, stagger: 0.1, ease: "power4.out", delay: 0.2 }
+  )
+
+  const heroOthers = document.querySelectorAll('.gsap-hero-text, .gsap-hero-btn')
+  gsap.fromTo(heroOthers,
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "power3.out", delay: 0.6 }
+  )
+
+  // 2. Parallax Images (Deep Scrub)
+  const parallaxImgs = document.querySelectorAll('.gsap-parallax-img')
+  parallaxImgs.forEach((img) => {
+    // Math: img height is 130vh, top is -15vh. 
+    // We travel from y: -15vh to y: 15vh, which keeps the image perfectly spanning the 100vh container.
+    gsap.fromTo(img,
+      { y: "-15vh" },
+      {
+        y: "15vh",
+        ease: "none",
+        scrollTrigger: {
+          trigger: img.parentElement?.parentElement, // the section
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    )
+  })
+
+  // 3. Section Overlapping (CSS solid-sections glide over gsap-pin-sections)
+  // To achieve Aupale effects, we pin parallax sections so the next solid section wipes over them.
+  const pinSections = document.querySelectorAll('.gsap-pin-section')
+  pinSections.forEach((sec, index, arr) => {
+    // If it's the last pinned section, pin it for an extra bit to ensure footer covers it fully
+    const isLast = index === arr.length - 1;
+    ScrollTrigger.create({
+      trigger: sec,
+      start: "top top",
+      end: isLast ? "+=150%" : "+=100%", // Explicitly pin until the next section completely covers it
+      pin: true,
+      pinSpacing: false // Allows the next section to immediately scroll over it
+    })
+  })
+
+  // 4. Split Text Reveals (Staggered lines for H2s)
+  // Note: True SplitText requires Club GreenSock, so we fade-up block style
+  const splitTexts = document.querySelectorAll('.split-text')
+  splitTexts.forEach((text) => {
+    gsap.fromTo(text, 
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1.2, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: text,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+  })
+
+  const fadeUpTexts = document.querySelectorAll('.fade-up-text, .stagger-p p')
+  fadeUpTexts.forEach((text) => {
+    gsap.fromTo(text, 
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 1, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: text,
+          start: "top 90%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    )
+  })
+
+  // 5. Image Reveal & Zoom (Aupale-like wipe effect)
+  const imgRevealCover = document.querySelector('.img-reveal-cover')
+  const zoomImg = document.querySelector('.zoom-img')
+  if (imgRevealCover && zoomImg) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.img-reveal-wrapper',
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    })
+    tl.to(imgRevealCover, { height: '0%', duration: 1.2, ease: "power4.inOut" })
+      .fromTo(zoomImg, { scale: 1.2 }, { scale: 1, duration: 1.5, ease: "power3.out" }, "-=1.2")
+  }
+
+  // 6. Footer Staggered Reveal
+  const footerElements = document.querySelectorAll('.gsap-footer')
+  ScrollTrigger.create({
+    trigger: "footer",
+    start: "top 90%",
+    onEnter: () => {
+      gsap.fromTo(footerElements, 
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" }
+      )
+    }
+  })
+
+  // ------------------------------------------------------------------
+  // Interactive Pop-ups Logic
+  // ------------------------------------------------------------------
+
+  // A. Welcome Modal (Age Gate Style)
+  const welcomePopup = document.getElementById('welcome-popup')
+  const enterBtn = document.getElementById('enter-btn')
+  
+  if (welcomePopup && enterBtn) {
+    // Pause Lenis scrolling while welcome modal is active
+    lenis.stop()
+    
+    // Entrance animation for modal text
+    gsap.fromTo('.welcome-title, .welcome-text, #enter-btn',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out", delay: 0.5 }
+    )
+
+    enterBtn.addEventListener('click', () => {
+      // Exit animation
+      const tl = gsap.timeline({
+        onComplete: () => {
+          welcomePopup.style.display = 'none';
+          lenis.start(); // Resume scrolling
+        }
+      })
+      tl.to('.welcome-title, .welcome-text, #enter-btn', { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.in" })
+        .to(welcomePopup, { opacity: 0, visibility: 'hidden', duration: 0.8, ease: "power2.inOut" }, "-=0.2")
+    })
+  } else {
+    // Fallback if no welcome modal
+    lenis.start()
+  }
+
+  // B. Full-screen Menu
+  const menuToggle = document.getElementById('menu-toggle')
+  const menuClose = document.getElementById('menu-close')
+  const menuPopup = document.getElementById('menu-popup')
+  const menuLinks = document.querySelectorAll('.menu-link')
+
+  if (menuToggle && menuClose && menuPopup) {
+    const menuTl = gsap.timeline({ paused: true, reversed: true })
+    
+    // Menu Background reveal
+    menuTl.to(menuPopup, { autoAlpha: 1, duration: 0.6, ease: "power3.inOut" })
+    // Menu Links stagger up
+    menuTl.to(menuLinks, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power4.out" }, "-=0.3")
+
+    menuToggle.addEventListener('click', () => {
+      lenis.stop()
+      menuTl.play()
+    })
+
+    const closeNav = () => {
+      menuTl.reverse()
+      lenis.start()
+    }
+
+    menuClose.addEventListener('click', closeNav)
+    menuLinks.forEach(link => link.addEventListener('click', closeNav))
+  }
+
+  // C. Newsletter Floating Popup
+  const newsletterPopup = document.getElementById('newsletter-popup')
+  const newsletterClose = document.getElementById('newsletter-close')
+  const newsletterBtn = newsletterPopup?.querySelector('.btn-small')
+  const newsletterInput = newsletterPopup?.querySelector('input[type="email"]') as HTMLInputElement
+
+  if (newsletterPopup && newsletterClose && newsletterBtn && newsletterInput) {
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top -40%", // Triggers when scrolled 40% down
+      onEnter: () => {
+        if (!newsletterPopup.classList.contains('closed') && !newsletterPopup.classList.contains('subscribed')) {
+          gsap.to(newsletterPopup, { autoAlpha: 1, y: -20, duration: 0.8, ease: "power3.out" })
+        }
+      }
+    })
+
+    newsletterClose.addEventListener('click', () => {
+      newsletterPopup.classList.add('closed')
+      gsap.to(newsletterPopup, { autoAlpha: 0, y: 20, duration: 0.4, ease: "power2.in" })
+    })
+
+    newsletterBtn.addEventListener('click', async () => {
+      const email = newsletterInput.value;
+      if (!email) return;
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        
+        if (response.ok) {
+          newsletterPopup.classList.add('subscribed');
+          newsletterPopup.innerHTML = '<h3 style="margin-bottom:0">Welcome to the inner circle.</h3>';
+          setTimeout(() => {
+            gsap.to(newsletterPopup, { autoAlpha: 0, y: 20, duration: 0.4, ease: "power2.in" })
+          }, 3000);
+        } else {
+          alert("Error: " + (await response.json()).detail);
+        }
+      } catch (e) {
+        console.error("Backend unreachable. Is FastAPI running?", e);
+        alert("Backend unreachable. Please ensure Python backend is running.");
+      }
+    })
+  }
+
+})
+

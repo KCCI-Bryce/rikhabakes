@@ -153,10 +153,13 @@ const fetchProducts = async () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero reveal
-  gsap.fromTo('.gsap-reveal-text', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" });
-  gsap.fromTo('.gsap-reveal-subtext', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, delay: 0.3, ease: "power3.out" });
+  // Hero reveal — use gsap.from so text starts visible (opacity:1) and just slides up
+  // This prevents text from being stuck invisible if animation fails to fire
+  gsap.set('.gsap-reveal-text, .gsap-reveal-subtext', { opacity: 1 });
+  gsap.from('.gsap-reveal-text', { y: 60, duration: 1.5, ease: "power4.out" });
+  gsap.from('.gsap-reveal-subtext', { y: 40, duration: 1.5, delay: 0.3, ease: "power3.out" });
 
   setupModals();
   fetchProducts();
 });
+

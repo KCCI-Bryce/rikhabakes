@@ -1,272 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>rikhabakes | Products</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu - Rikha Bakes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fff9f4;
-      --card: #ffffff;
-      --text: #4e382e;
-      --muted: #8a6f62;
-      --accent: #f08d76;
-      --accent-dark: #df755d;
-      --line: #f3ddd2;
-      --shadow: 0 12px 24px rgba(154, 104, 83, 0.14);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Manrope", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 0% 0%, #fff1e6, transparent 34%),
-        radial-gradient(circle at 100% 20%, #ffe8de, transparent 25%),
-        linear-gradient(150deg, #fffdfb, var(--bg));
-      min-height: 100vh;
-    }
-
-    .wrap {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 1.2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .brand {
-      font-family: "Fraunces", serif;
-      font-size: 1.55rem;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .hero {
-      padding: 1.4rem 0 2rem;
-    }
-
-    h1 {
-      font-family: "Fraunces", serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.1;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 65ch;
-    }
-
-    .grid {
-      padding-bottom: 2.8rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-      background: #ffe6db;
-    }
-
-    .content {
-      padding: 0.95rem 0.95rem 1.1rem;
-    }
-
-    .content h3 {
-      font-size: 1.02rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .content p {
-      color: var(--muted);
-      font-size: 0.93rem;
-      min-height: 42px;
-    }
-
-    .price {
-      margin-top: 0.7rem;
-      color: var(--accent-dark);
-      font-weight: 700;
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 0.65rem;
-      text-decoration: none;
-      color: #fff;
-      background: var(--accent);
-      border-radius: 999px;
-      padding: 0.5rem 0.9rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      padding: 1.2rem 0 2rem;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 920px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(210px, 1fr));
-      }
-    }
-
-    @media (max-width: 620px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="index.html">rikhabakes</a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </header>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
 
-    <section class="hero">
-      <h1>Our Product Collection</h1>
-      <p>Fresh yummies</p>
-    </section>
+  <header>
+    <a href="index.html" class="brand">Rikhabakes</a>
+    <div style="display: flex; gap: 2rem; align-items: center;">
+      <button id="login-toggle" class="btn-text">Client Access</button>
+      <button id="menu-toggle" class="btn-text">Menu</button>
+    </div>
+  </header>
 
-    <section class="grid">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Vanilla cloud cake">
-        <div class="content">
-          <h3>Vanilla Cloud Cake</h3>
-          <div class="price">600 PESOS</div>
-          <a class="cta" href="index.html#contact">Order</a>
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <section class="products-hero">
+        <div class="content-wrapper">
+          <h1 class="gsap-reveal-text">The Menu</h1>
+          <p class="gsap-reveal-subtext">A selection of our daily creations, crafted with precision.</p>
         </div>
-      </article>
+      </section>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=900&q=80" alt="Pistachio tart">
-        <div class="content">
-          <h3>Mint Pistachio Tart</h3>
-          <div class="price">25 PESOS</div>
-          <a class="cta" href="index.html#contact">Order</a>
+      <section id="products-list">
+        <div id="products-container" class="products-grid">
+          <div class="loading-indicator">Retrieving Artistry...</div>
         </div>
-      </article>
+      </section>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=900&q=80" alt="Berry cupcakes">
-        <div class="content">
-          <h3>Berry Bliss Cupcakes</h3>
-          <div class="price">$14 / box</div>
-          <a class="cta" href="index.html#contact">Order</a>
+      <footer id="contact" class="solid-section">
+        <div class="content-wrapper">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <a href="index.html" class="brand"
+                style="font-size: 1.2rem; display: block; margin-bottom: 1rem;">RIKHABAKES</a>
+              <p style="font-size: 0.9rem; margin: 0;">Elevating the standard of baking through purity and precision.
+              </p>
+            </div>
+            <div class="footer-col">
+              <h3>Explore</h3>
+              <ul>
+                <li><a href="index.html#vision">Our Philosophy</a></li>
+                <li><a href="products.html">The Menu</a></li>
+                <li><a href="#">Journal</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3>Inquiries</h3>
+              <ul>
+                <li><a href="mailto:bryceethanfarol@gmail.com">bryceethanfarol@gmail.com</a></li>
+                <li><a href="#">Wholesale</a></li>
+                <li><a href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div>&copy; 2026 Rikhabakes. All Rights Reserved.</div>
+            <div style="display: flex; gap: 1rem;">
+              <a href="#" style="color: var(--muted); text-decoration: none;">Instagram</a>
+              <a href="#" style="color: var(--muted); text-decoration: none;">Twitter</a>
+            </div>
+          </div>
         </div>
-      </article>
+      </footer>
+    </div>
+  </main>
 
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=80" alt="Chocolate fudge cake">
-        <div class="content">
-          <h3>Chocolate Fudge Cake</h3>
-          <div class="price">30 PESOS</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=900&q=80" alt="Butter croissants">
-        <div class="content">
-          <h3>Butter Croissant Box</h3>
-          <div class="price">450 PESOS /BOX</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1457666134378-6b77915bd5f2?auto=format&fit=crop&w=900&q=80" alt="Pastel macarons">
-        <div class="content">
-          <h3>Pastel Macarons</h3>
-          <div class="price">350 PESOS /BOX</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=80" alt="Strawberry tart">
-        <div class="content">
-          <h3>Strawberry Tart</h3>
-          <div class="price">40 PESOS</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Brioche buns">
-        <div class="content">
-          <h3>Honey Brioche Buns</h3>
-          <div class="price">80 PESOS / 6 pcs</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=900&q=80" alt="Glazed donuts">
-        <div class="content">
-          <h3>Glazed Donut Mix</h3>
-          <div class="price">250 PESOS / box</div>
-          <a class="cta" href="index.html#contact">Order</a>
-        </div>
-      </article>
-    </section>
-
-    <footer>
-      rikhabakes | Fresh, light, and handcrafted daily.
-    </footer>
+  <!-- Shared Modals -->
+  <!-- 1. Full-screen Menu Overlay -->
+  <div id="menu-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
+    <button id="menu-close" class="btn-text close-btn">Close</button>
+    <nav class="fullscreen-nav">
+      <a href="index.html#vision" class="menu-link">Philosophy</a>
+      <a href="index.html#collection" class="menu-link">Collection</a>
+      <a href="index.html#contact" class="menu-link">Say Hello</a>
+      <a href="products.html" class="menu-link">Menu Store</a>
+    </nav>
   </div>
+
+  <!-- 2. Login Popup -->
+  <div id="login-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
+    <button id="login-close" class="btn-text close-btn">Close</button>
+    <div class="popup-content text-center" style="display: flex; flex-direction: column; align-items: center;">
+      <h2 id="login-title" class="welcome-title">Client Access</h2>
+      <p id="login-subtitle" class="welcome-text">Secure sign-in for orders and reservations.</p>
+      <div class="input-group"
+        style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; align-items: center; width: 100%; max-width: 320px;">
+        <input type="email" id="login-email" placeholder="Email Address"
+          style="width: 100%; padding: 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
+        <input type="password" id="login-password" placeholder="Password"
+          style="width: 100%; padding: 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
+        <button id="login-submit-btn" class="btn" style="margin-top: 1rem; width: 100%;">Sign In</button>
+        <div id="login-error" style="color: #ff5555; margin-top: 0.5rem; font-size: 0.85rem; height: 1.2rem;"></div>
+        <button id="register-toggle-btn" class="btn-text"
+          style="margin-top: 1rem; font-size: 0.75rem; color: var(--accent);">Create Account Instead</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/products.ts"></script>
 </body>
+
 </html>

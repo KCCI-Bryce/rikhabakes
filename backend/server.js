@@ -26,8 +26,8 @@ db.serialize(() => {
 app.post('/api/subscribe', (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ detail: "Email required" });
-  
-  db.run("INSERT INTO subscribers (email) VALUES (?)", [email], function(err) {
+
+  db.run("INSERT INTO subscribers (email) VALUES (?)", [email], function (err) {
     if (err) {
       if (err.message.includes("UNIQUE")) {
         return res.status(400).json({ detail: "Email already registered" });
@@ -46,9 +46,9 @@ app.get('/api/products', (req, res) => {
     if (rows.length === 0) {
       // Fallback data if table is empty
       return res.json([
-        {"id": 1, "name": "Classic Croissant", "price": "$4.50", "image_url": "https://images.unsplash.com/photo-1555507036-ab1f40ce88f4?auto=format&fit=crop&w=400&q=80"},
-        {"id": 2, "name": "Sourdough Loaf", "price": "$8.00", "image_url": "https://images.unsplash.com/photo-1585478259715-876a6a81fa08?auto=format&fit=crop&w=400&q=80"},
-        {"id": 3, "name": "Almond Tart", "price": "$6.25", "image_url": "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80"}
+        { "id": 1, "name": "Classic Croissant", "price": "₱200", "image_url": "https://images.unsplash.com/photo-1555507036-ab1f40ce88f4?auto=format&fit=crop&w=400&q=80" },
+        { "id": 2, "name": "Sourdough Loaf", "price": "₱250", "image_url": "https://images.unsplash.com/photo-1585478259715-876a6a81fa08?auto=format&fit=crop&w=400&q=80" },
+        { "id": 3, "name": "Almond Tart", "price": "₱200", "image_url": "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80" }
       ]);
     }
     res.json(rows);
@@ -59,10 +59,10 @@ app.get('/api/products', (req, res) => {
 app.post('/api/register', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ detail: "Email and password required" });
-  
+
   const hashedPassword = await bcrypt.hash(password, 10);
-  
-  db.run("INSERT INTO users (email, password) VALUES (?, ?)", [email, hashedPassword], function(err) {
+
+  db.run("INSERT INTO users (email, password) VALUES (?, ?)", [email, hashedPassword], function (err) {
     if (err) {
       if (err.message.includes("UNIQUE")) return res.status(400).json({ detail: "Email already exists" });
       return res.status(500).json({ detail: "Database error" });
@@ -75,14 +75,14 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ detail: "Email and password required" });
-  
+
   db.get("SELECT * FROM users WHERE email = ?", [email], async (err, user) => {
     if (err) return res.status(500).json({ detail: "Database error" });
     if (!user) return res.status(400).json({ detail: "Invalid email or password" });
-    
+
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ detail: "Invalid email or password" });
-    
+
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
     res.json({ token, email: user.email });
   });
@@ -95,7 +95,7 @@ app.get('/api/stats', (req, res) => {
   db.get("SELECT COUNT(*) AS total_subscribers FROM subscribers", [], (err, row) => {
     if (err) return res.status(500).json({ detail: "Database error" });
     const totalSubs = row ? row.total_subscribers : 0;
-    
+
     // Dynamically mock customer historical growth combined with real subscriptions
     const customerGrowth = [
       { month: "Jan", customers: 120 },
@@ -103,15 +103,15 @@ app.get('/api/stats', (req, res) => {
       { month: "Mar", customers: 195 },
       { month: "Apr", customers: 240 },
       { month: "May", customers: 290 },
-      { month: "Jun", customers: 350 + (totalSubs * 4) } 
+      { month: "Jun", customers: 350 + (totalSubs * 4) }
     ];
-    
+
     const salesData = [
       { product: "Classic Croissant", revenue: 4500 },
       { product: "Sourdough Loaf", revenue: 8000 },
       { product: "Almond Tart", revenue: 3200 },
     ];
-    
+
     res.json({ total_subscribers: totalSubs, growth: customerGrowth, sales: salesData });
   });
 });

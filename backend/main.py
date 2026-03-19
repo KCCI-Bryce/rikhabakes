@@ -32,8 +32,8 @@ def get_products(db: Session = Depends(get_db)):
     products = db.query(models.Product).all()
     if not products:
         return [
-            {"id": 1, "name": "Classic Croissant", "price": "$4.50", "image_url": "https://images.unsplash.com/photo-1555507036-ab1f40ce88f4?auto=format&fit=crop&w=400&q=80"},
-            {"id": 2, "name": "Sourdough Loaf", "price": "$8.00", "image_url": "https://images.unsplash.com/photo-1585478259715-876a6a81fa08?auto=format&fit=crop&w=400&q=80"},
-            {"id": 3, "name": "Almond Tart", "price": "$6.25", "image_url": "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80"}
+            {"id": 1, "name": "Classic Croissant", "price": "₱200", "image_url": "https://images.unsplash.com/photo-1555507036-ab1f40ce88f4?auto=format&fit=crop&w=400&q=80"},
+            {"id": 2, "name": "Sourdough Loaf", "price": "₱250", "image_url": "https://images.unsplash.com/photo-1585478259715-876a6a81fa08?auto=format&fit=crop&w=400&q=80"},
+            {"id": 3, "name": "Almond Tart", "price": "₱200", "image_url": "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=400&q=80"}
         ]
     return products

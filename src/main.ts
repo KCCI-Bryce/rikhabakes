@@ -40,7 +40,7 @@ window.addEventListener('mousemove', (e) => {
 
 document.querySelectorAll('a, .btn').forEach((el) => {
   el.addEventListener('mouseenter', () => {
-    gsap.to(cursorOutline, { scale: 1.5, backgroundColor: 'rgba(255,255,255,0.1)', duration: 0.3 });
+    gsap.to(cursorOutline, { scale: 1.5, backgroundColor: 'rgba(201, 130, 94, 0.15)', duration: 0.3 });
   });
   el.addEventListener('mouseleave', () => {
     gsap.to(cursorOutline, { scale: 1, backgroundColor: 'transparent', duration: 0.3 });

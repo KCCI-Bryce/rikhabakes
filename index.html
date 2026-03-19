@@ -24,46 +24,52 @@
     <main id="smooth-wrapper">
       <div id="smooth-content">
 
-        <!-- Section 1: Hero Advanced Parallax -->
-        <section id="hero" class="section hero-section gsap-pin-section">
-          <div class="gsap-parallax-wrapper">
-            <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1614145121029-83bc9ed77873?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
-          </div>
-          <div class="content-wrapper text-center hero-content">
-            <h1 class="gsap-hero-title">
-              <span class="line-wrap"><span class="line-inner">Crafted</span></span>
-              <span class="line-wrap"><span class="line-inner">Differently.</span></span>
-            </h1>
-            <p class="gsap-hero-text" style="color: #e0e0e0; font-size: 1.25rem;">An intersection of pure ingredients and meticulous artistry.</p>
-            <div class="gsap-hero-btn">
-              <a href="#collection" class="btn">Discover the Collection</a>
+        <!-- STICKY WIPE SCENE 1: Hero -->
+        <div class="sticky-scene" style="height: 200vh; z-index: 1; position: relative;">
+          <!-- Section 1: Hero Advanced Parallax -->
+          <section id="hero" class="section hero-section gsap-pin-section">
+            <div class="gsap-parallax-wrapper">
+              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1614145121029-83bc9ed77873?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
+              <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
             </div>
-          </div>
-        </section>
+            <div class="content-wrapper text-center hero-content">
+              <h1 class="gsap-hero-title">
+                <span class="line-wrap"><span class="line-inner">Crafted</span></span>
+                <span class="line-wrap"><span class="line-inner">Differently.</span></span>
+              </h1>
+              <p class="gsap-hero-text" style="color: #e0e0e0; font-size: 1.25rem;">An intersection of pure ingredients and meticulous artistry.</p>
+              <div class="gsap-hero-btn">
+                <a href="#collection" class="btn">Discover the Collection</a>
+              </div>
+            </div>
+          </section>
+        </div>
 
         <!-- Section 2: Statement (Slides over hero) -->
-        <section id="vision" class="section text-center solid-section">
+        <section id="vision" class="section text-center solid-section" style="z-index: 2; position: relative;">
           <div class="content-wrapper">
             <h2 class="split-text">Born from an obsession with perfection.</h2>
             <p class="fade-up-text">We strip away the unnecessary, focusing only on real, uncompromised ingredients. When nature perfects a flavor, we don't alter it; we reveal it. Every element is tested, refined, and elevated to its absolute peak.</p>
           </div>
         </section>
 
-        <!-- Section 3: Creation Advanced Parallax -->
-        <section id="creation" class="section gsap-pin-section has-parallax">
-          <div class="gsap-parallax-wrapper">
-            <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.6);"></div>
-          </div>
-          <div class="content-wrapper text-center">
-            <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">The Art of<br>The Bake</h2>
-            <p class="fade-up-text" style="color: #d0d0d0;">Precision in temperature. Mastery in technique. The result is unparalleled texture and depth.</p>
-          </div>
-        </section>
+        <!-- STICKY WIPE SCENE 2: The Art of the Bake -->
+        <div class="sticky-scene" style="height: 200vh; z-index: 3; position: relative;">
+          <!-- Section 3: Creation Advanced Parallax -->
+          <section id="creation" class="section gsap-pin-section has-parallax">
+            <div class="gsap-parallax-wrapper">
+              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
+              <div class="overlay" style="background: rgba(0,0,0,0.6);"></div>
+            </div>
+            <div class="content-wrapper text-center">
+              <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">The Art of<br>The Bake</h2>
+              <p class="fade-up-text" style="color: #d0d0d0;">Precision in temperature. Mastery in technique. The result is unparalleled texture and depth.</p>
+            </div>
+          </section>
+        </div>
 
         <!-- Section 4: Split Content -->
-        <section id="philosophy" class="section solid-section">
+        <section id="philosophy" class="section solid-section" style="z-index: 4; position: relative;">
           <div class="content-wrapper dual-grid">
             <div class="philosophy-text">
               <h2 class="split-text">Ultimate Purity.<br>Pure Chemistry.</h2>
@@ -80,18 +86,21 @@
           </div>
         </section>
 
-        <!-- Section 5: Product Advanced Parallax -->
-        <section id="collection" class="section gsap-pin-section has-parallax">
-          <div class="gsap-parallax-wrapper">
-            <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1557925923-33b251dc32d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-            <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
-          </div>
-          <div class="content-wrapper text-center">
-            <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 5rem);">The Collection</h2>
-            <p class="fade-up-text" style="color: #eee; margin-bottom: 2rem;">A curated selection of our finest works, baked daily.</p>
-            <a href="products.html" class="btn fade-up-text">View Menu</a>
-          </div>
-        </section>
+        <!-- STICKY WIPE SCENE 3: The Collection -->
+        <div class="sticky-scene" style="height: 200vh; z-index: 5; position: relative;">
+          <!-- Section 5: Product Advanced Parallax -->
+          <section id="collection" class="section gsap-pin-section has-parallax">
+            <div class="gsap-parallax-wrapper">
+              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1557925923-33b251dc32d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
+              <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
+            </div>
+            <div class="content-wrapper text-center">
+              <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 5rem);">The Collection</h2>
+              <p class="fade-up-text" style="color: #eee; margin-bottom: 2rem;">A curated selection of our finest works, baked daily.</p>
+              <a href="products.html" class="btn fade-up-text">View Menu</a>
+            </div>
+          </section>
+        </div>
 
         <footer id="contact" class="solid-section">
           <div class="content-wrapper">

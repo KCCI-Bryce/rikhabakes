@@ -196,12 +196,19 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* Sticky Wipe System - replaces unreliable GSAP pinning */
+.sticky-scene {
+  position: relative;
+}
+
 .gsap-pin-section {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* For inner parallax */
+  overflow: hidden;
+  position: sticky;
+  top: 0;
 }
 
 .solid-section {
@@ -210,8 +217,8 @@ nav a:hover::after {
   align-items: center;
   justify-content: center;
   background-color: var(--surface);
-  z-index: 2;
   position: relative;
+  z-index: 2;
   padding: var(--spacing-xl) 5vw;
 }
 

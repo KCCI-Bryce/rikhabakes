@@ -86,20 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     )
   })
 
-  // 3. Section Overlapping (CSS solid-sections glide over gsap-pin-sections)
-  // To achieve Aupale effects, we pin parallax sections so the next solid section wipes over them.
-  const pinSections = document.querySelectorAll('.gsap-pin-section')
-  pinSections.forEach((sec, index, arr) => {
-    // If it's the last pinned section, pin it for an extra bit to ensure footer covers it fully
-    const isLast = index === arr.length - 1;
-    ScrollTrigger.create({
-      trigger: sec,
-      start: "top top",
-      end: isLast ? "+=150%" : "+=100%", // Explicitly pin until the next section completely covers it
-      pin: true,
-      pinSpacing: false // Allows the next section to immediately scroll over it
-    })
-  })
+  // 3. Parallax images scrub (runs independently, no pinning needed)
+  // The sticky-scene containers in HTML handle the wipe effect via CSS position:sticky.
+  // GSAP is only responsible for the background image movement within the pinned sections.
 
   // 4. Split Text Reveals (Staggered lines for H2s)
   // Note: True SplitText requires Club GreenSock, so we fade-up block style

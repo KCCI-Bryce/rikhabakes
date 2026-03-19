@@ -1,189 +1,216 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rikha Bakes - Premium Artistry</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Custom Cursor (optional premium touch) -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
-    <header>
-      <a href="#" class="brand">Rikhabakes</a>
-      <div style="display: flex; gap: 2rem; align-items: center;">
-        <button id="login-toggle" class="btn-text">Client Access</button>
-        <button id="menu-toggle" class="btn-text">Menu</button>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rikha Bakes - Premium Artistry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+</head>
 
-    <main id="smooth-wrapper">
-      <div id="smooth-content">
+<body>
+  <!-- Custom Cursor (optional premium touch) -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
 
-        <!-- STICKY WIPE SCENE 1: Hero -->
-        <div class="sticky-scene" style="height: 200vh; z-index: 1; position: relative;">
-          <!-- Section 1: Hero Advanced Parallax -->
-          <section id="hero" class="section hero-section gsap-pin-section">
-            <div class="gsap-parallax-wrapper">
-              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1614145121029-83bc9ed77873?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-              <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
+  <header>
+    <a href="#" class="brand">Rikhabakes</a>
+    <div style="display: flex; gap: 2rem; align-items: center;">
+      <button id="login-toggle" class="btn-text">Client Access</button>
+      <button id="menu-toggle" class="btn-text">Menu</button>
+    </div>
+  </header>
+
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- STICKY WIPE SCENE 1: Hero -->
+      <div class="sticky-scene" style="height: 200vh; z-index: 1; position: relative;">
+        <!-- Section 1: Hero Advanced Parallax -->
+        <section id="hero" class="section hero-section gsap-pin-section">
+          <div class="gsap-parallax-wrapper">
+            <div class="gsap-parallax-img"
+              style="background-image: url('https://images.unsplash.com/photo-1614145121029-83bc9ed77873?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');">
             </div>
-            <div class="content-wrapper text-center hero-content">
-              <h1 class="gsap-hero-title">
-                <span class="line-wrap"><span class="line-inner">Crafted</span></span>
-                <span class="line-wrap"><span class="line-inner">Differently.</span></span>
-              </h1>
-          <p class="gsap-hero-text" style="color: #f5ddc8; font-size: 1.25rem;">An intersection of pure ingredients and meticulous artistry.</p>
-              <div class="gsap-hero-btn">
-                <a href="#collection" class="btn">Discover the Collection</a>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <section id="vision" class="section text-center solid-section" style="z-index: 2; position: relative; background: linear-gradient(135deg, #faf6f1, #f5e8d8);">
-          <div class="content-wrapper">
-            <h2 class="split-text">Born from an obsession with perfection.</h2>
-            <p class="fade-up-text">We strip away the unnecessary, focusing only on real, uncompromised ingredients. When nature perfects a flavor, we don't alter it; we reveal it. Every element is tested, refined, and elevated to its absolute peak.</p>
+            <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
           </div>
-        </section>
-
-        <!-- STICKY WIPE SCENE 2: The Art of the Bake -->
-        <div class="sticky-scene" style="height: 200vh; z-index: 3; position: relative;">
-          <!-- Section 3: Creation Advanced Parallax -->
-          <section id="creation" class="section gsap-pin-section has-parallax">
-            <div class="gsap-parallax-wrapper">
-              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-              <div class="overlay" style="background: rgba(30, 15, 5, 0.55);"></div>
-            </div>
-            <div class="content-wrapper text-center">
-              <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">The Art of<br>The Bake</h2>
-          <p class="fade-up-text" style="color: #f5ddc8;">Precision in temperature. Mastery in technique. The result is unparalleled texture and depth.</p>
-            </div>
-          </section>
-        </div>
-
-        <!-- Section 4: Split Content -->
-        <section id="philosophy" class="section solid-section" style="z-index: 4; position: relative;">
-          <div class="content-wrapper dual-grid">
-            <div class="philosophy-text">
-              <h2 class="split-text">Ultimate Purity.<br>Pure Chemistry.</h2>
-              <div class="stagger-p">
-                <p>The foundation of every creation lies not in complexity, but in the uncompromising quality of the source material.</p>
-                <p>We source the finest grains, the purest butter, and single-origin chocolates. This minimal-intervention approach ensures that the true character of the ingredient shines through in every delicate layer and crisp crust.</p>
-              </div>
-              <a href="#contact" class="btn fade-up-text">Read Our Story</a>
-            </div>
-            <div class="img-reveal-wrapper">
-              <div class="img-reveal-cover"></div>
-              <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Sourdough bread texture" class="philosophy-img zoom-img">
+          <div class="content-wrapper text-center hero-content">
+            <h1 class="gsap-hero-title">
+              <span class="line-wrap"><span class="line-inner">Crafted</span></span>
+              <span class="line-wrap"><span class="line-inner">Differently.</span></span>
+            </h1>
+            <p class="gsap-hero-text" style="color: #f5ddc8; font-size: 1.25rem;">An intersection of pure ingredients
+              and meticulous artistry.</p>
+            <div class="gsap-hero-btn">
+              <a href="#collection" class="btn">Discover the Collection</a>
             </div>
           </div>
         </section>
+      </div>
 
-        <!-- STICKY WIPE SCENE 3: The Collection -->
-        <div class="sticky-scene" style="height: 200vh; z-index: 5; position: relative;">
-          <!-- Section 5: Product Advanced Parallax -->
-          <section id="collection" class="section gsap-pin-section has-parallax">
-            <div class="gsap-parallax-wrapper">
-              <div class="gsap-parallax-img" style="background-image: url('https://images.unsplash.com/photo-1557925923-33b251dc32d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');"></div>
-              <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
-            </div>
-            <div class="content-wrapper text-center">
-              <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 5rem);">The Collection</h2>
-              <p class="fade-up-text" style="color: #f5ddc8; margin-bottom: 2rem;">A curated selection of our finest works, baked daily.</p>
-              <a href="products.html" class="btn fade-up-text">View Menu</a>
-            </div>
-          </section>
+      <section id="vision" class="section text-center solid-section"
+        style="z-index: 2; position: relative; background: linear-gradient(135deg, #faf6f1, #f5e8d8);">
+        <div class="content-wrapper">
+          <h2 class="split-text">Born from an obsession with perfection.</h2>
+          <p class="fade-up-text">We strip away the unnecessary, focusing only on real, uncompromised ingredients. When
+            nature perfects a flavor, we don't alter it; we reveal it. Every element is tested, refined, and elevated to
+            its absolute peak.</p>
         </div>
+      </section>
 
-        <footer id="contact" class="solid-section">
-          <div class="content-wrapper">
-            <div class="footer-grid">
-              <div class="footer-col gsap-footer">
-                <a href="#" class="brand" style="font-size: 1.2rem; display: block; margin-bottom: 1rem;">RIKHABAKES</a>
-                <p style="font-size: 0.9rem; margin: 0;">Elevating the standard of baking through purity and precision.</p>
-              </div>
-              <div class="footer-col gsap-footer">
-                <h3>Explore</h3>
-                <ul>
-                  <li><a href="#vision">Our Philosophy</a></li>
-                  <li><a href="products.html">The Menu</a></li>
-                  <li><a href="#">Journal</a></li>
-                </ul>
-              </div>
-              <div class="footer-col gsap-footer">
-                <h3>Inquiries</h3>
-                <ul>
-                  <li><a href="mailto:bryceethanfarol@gmail.com">bryceethanfarol@gmail.com</a></li>
-                  <li><a href="#">Wholesale</a></li>
-                  <li><a href="#">Press</a></li>
-                </ul>
-              </div>
+      <!-- STICKY WIPE SCENE 2: The Art of the Bake -->
+      <div class="sticky-scene" style="height: 200vh; z-index: 3; position: relative;">
+        <!-- Section 3: Creation Advanced Parallax -->
+        <section id="creation" class="section gsap-pin-section has-parallax">
+          <div class="gsap-parallax-wrapper">
+            <div class="gsap-parallax-img"
+              style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');">
             </div>
-            <div class="footer-bottom gsap-footer">
-              <div>&copy; 2026 Rikhabakes. All Rights Reserved.</div>
-              <div style="display: flex; gap: 1rem;">
-                <a href="#" style="color: var(--muted); text-decoration: none;">Instagram</a>
-                <a href="#" style="color: var(--muted); text-decoration: none;">Twitter</a>
-              </div>
-            </div>
+            <div class="overlay" style="background: rgba(30, 15, 5, 0.55);"></div>
           </div>
-        </footer>
+          <div class="content-wrapper text-center">
+            <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">The Art of<br>The Bake</h2>
+            <p class="fade-up-text" style="color: #f5ddc8;">Precision in temperature. Mastery in technique. The result
+              is unparalleled texture and depth.</p>
+          </div>
+        </section>
       </div>
-    </main>
 
-    <!-- 1. Welcome Modal (Age-gate style overlay) -->
-    <div id="welcome-popup" class="fullscreen-popup popup-overlay">
-      <div class="popup-content text-center">
-        <h2 class="welcome-title">Artistry Awaits.</h2>
-        <p class="welcome-text">Experience the uncompromising quality of Rikhabakes.</p>
-        <button id="enter-btn" class="btn popup-btn">Enter</button>
-      </div>
-    </div>
-
-    <!-- 2. Full-screen Menu Overlay -->
-    <div id="menu-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
-      <button id="menu-close" class="btn-text close-btn">Close</button>
-      <nav class="fullscreen-nav">
-        <a href="#vision" class="menu-link">Philosophy</a>
-        <a href="#collection" class="menu-link">Collection</a>
-        <a href="#contact" class="menu-link">Say Hello</a>
-        <a href="products.html" class="menu-link">Menu Store</a>
-      </nav>
-    </div>
-
-    <!-- 3. Floating Newsletter Popup -->
-    <div id="newsletter-popup" class="floating-popup">
-      <button id="newsletter-close" class="close-btn-small">✕</button>
-      <h3>Join the inner circle</h3>
-      <p>Exclusive releases, delivered to your inbox.</p>
-      <div class="input-group">
-        <input type="email" placeholder="Email Address">
-        <button class="btn-small">Join</button>
-      </div>
-    </div>
-
-        <!-- Login input colors for light theme -->
-        <div id="login-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
-          <button id="login-close" class="btn-text close-btn">Close</button>
-          <div class="popup-content text-center" style="display: flex; flex-direction: column; align-items: center;">
-            <h2 id="login-title" class="welcome-title">Client Access</h2>
-            <p id="login-subtitle" class="welcome-text">Secure sign-in for orders and reservations.</p>
-            <div class="input-group" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; align-items: center; width: 100%; max-width: 320px;">
-              <input type="email" id="login-email" placeholder="Email Address" style="width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
-              <input type="password" id="login-password" placeholder="Password" style="width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
-              <button id="login-submit-btn" class="btn" style="margin-top: 1rem; width: 100%;">Sign In</button>
-              <div id="login-error" style="color: #c0392b; margin-top: 0.5rem; font-size: 0.85rem; height: 1.2rem;"></div>
-              <button id="register-toggle-btn" class="btn-text" style="margin-top: 1rem; font-size: 0.75rem; color: var(--accent);">Create Account Instead</button>
+      <!-- Section 4: Split Content -->
+      <section id="philosophy" class="section solid-section" style="z-index: 4; position: relative;">
+        <div class="content-wrapper dual-grid">
+          <div class="philosophy-text">
+            <h2 class="split-text">Ultimate Purity.<br>Pure Chemistry.</h2>
+            <div class="stagger-p">
+              <p>The foundation of every creation lies not in complexity, but in the uncompromising quality of the
+                source material.</p>
+              <p>We source the finest grains, the purest butter, and single-origin chocolates. This minimal-intervention
+                approach ensures that the true character of the ingredient shines through in every delicate layer and
+                crisp crust.</p>
             </div>
+            <a href="#contact" class="btn fade-up-text">Read Our Story</a>
+          </div>
+          <div class="img-reveal-wrapper">
+            <div class="img-reveal-cover"></div>
+            <img
+              src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              alt="Sourdough bread texture" class="philosophy-img zoom-img">
           </div>
         </div>
+      </section>
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+      <!-- STICKY WIPE SCENE 3: The Collection -->
+      <div class="sticky-scene" style="height: 200vh; z-index: 5; position: relative;">
+        <!-- Section 5: Product Advanced Parallax -->
+        <section id="collection" class="section gsap-pin-section has-parallax">
+          <div class="gsap-parallax-wrapper">
+            <div class="gsap-parallax-img"
+              style="background-image: url('https://images.unsplash.com/photo-1557925923-33b251dc32d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2500&q=80');">
+            </div>
+            <div class="overlay" style="background: rgba(0,0,0,0.5);"></div>
+          </div>
+          <div class="content-wrapper text-center">
+            <h2 class="split-text" style="font-size: clamp(2.5rem, 6vw, 5rem);">The Collection</h2>
+            <p class="fade-up-text" style="color: #f5ddc8; margin-bottom: 2rem;">A curated selection of our finest
+              works, baked daily.</p>
+            <a href="products.html" class="btn fade-up-text">View Menu</a>
+          </div>
+        </section>
+      </div>
+
+      <footer id="contact" class="solid-section">
+        <div class="content-wrapper">
+          <div class="footer-grid">
+            <div class="footer-col gsap-footer">
+              <a href="#" class="brand" style="font-size: 1.2rem; display: block; margin-bottom: 1rem;">RIKHABAKES</a>
+              <p style="font-size: 0.9rem; margin: 0;">Elevating the standard of baking through purity and precision.
+              </p>
+            </div>
+            <div class="footer-col gsap-footer">
+              <h3>Explore</h3>
+              <ul>
+                <li><a href="#vision">Our Philosophy</a></li>
+                <li><a href="products.html">The Menu</a></li>
+                <li><a href="#">Journal</a></li>
+              </ul>
+            </div>
+            <div class="footer-col gsap-footer">
+              <h3>Inquiries</h3>
+              <ul>
+                <li><a href="mailto:bryceethanfarol@gmail.com">bryceethanfarol@gmail.com</a></li>
+                <li><a href="#">Wholesale</a></li>
+                <li><a href="#">Press</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom gsap-footer">
+            <div>&copy; 2026 Rikhabakes. All Rights Reserved.</div>
+            <div style="display: flex; gap: 1rem;">
+              <a href="#" style="color: var(--muted); text-decoration: none;">Instagram</a>
+              <a href="#" style="color: var(--muted); text-decoration: none;">Twitter</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- 1. Welcome Modal (Age-gate style overlay) -->
+  <div id="welcome-popup" class="fullscreen-popup popup-overlay">
+    <div class="popup-content text-center">
+      <h2 class="welcome-title">Allo nyemies</h2>
+      <p class="welcome-text">RikhaBakes yummies</p>
+      <button id="enter-btn" class="btn popup-btn">Enter</button>
+    </div>
+  </div>
+
+  <!-- 2. Full-screen Menu Overlay -->
+  <div id="menu-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
+    <button id="menu-close" class="btn-text close-btn">Close</button>
+    <nav class="fullscreen-nav">
+      <a href="#vision" class="menu-link">Vision</a>
+      <a href="#collection" class="menu-link">Collection</a>
+      <a href="#contact" class="menu-link">Say Hello</a>
+      <a href="products.html" class="menu-link">Menu Store</a>
+    </nav>
+  </div>
+
+  <!-- 3. Floating Newsletter Popup -->
+  <div id="newsletter-popup" class="floating-popup">
+    <button id="newsletter-close" class="close-btn-small">✕</button>
+    <h3>Join the inner circle</h3>
+    <p>Exclusive releases, delivered to your inbox.</p>
+    <div class="input-group">
+      <input type="email" placeholder="Email Address">
+      <button class="btn-small">Join</button>
+    </div>
+  </div>
+
+  <!-- Login input colors for light theme -->
+  <div id="login-popup" class="fullscreen-popup popup-overlay" style="visibility: hidden;">
+    <button id="login-close" class="btn-text close-btn">Close</button>
+    <div class="popup-content text-center" style="display: flex; flex-direction: column; align-items: center;">
+      <h2 id="login-title" class="welcome-title">Client Access</h2>
+      <p id="login-subtitle" class="welcome-text">Secure sign-in for orders and reservations.</p>
+      <div class="input-group"
+        style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; align-items: center; width: 100%; max-width: 320px;">
+        <input type="email" id="login-email" placeholder="Email Address"
+          style="width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
+        <input type="password" id="login-password" placeholder="Password"
+          style="width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-family: 'Manrope', sans-serif; outline: none; transition: border-color 0.3s;">
+        <button id="login-submit-btn" class="btn" style="margin-top: 1rem; width: 100%;">Sign In</button>
+        <div id="login-error" style="color: #c0392b; margin-top: 0.5rem; font-size: 0.85rem; height: 1.2rem;"></div>
+        <button id="register-toggle-btn" class="btn-text"
+          style="margin-top: 1rem; font-size: 0.75rem; color: var(--accent);">Create Account Instead</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

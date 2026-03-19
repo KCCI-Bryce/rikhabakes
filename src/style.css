@@ -213,6 +213,31 @@ nav a:hover::after {
   overflow: hidden;
   position: sticky;
   top: 0;
+  /* All text inside dark parallax sections must be light */
+  color: #fff;
+}
+
+/* Force white on all common text elements inside parallax */
+.gsap-pin-section h1,
+.gsap-pin-section h2,
+.gsap-pin-section p,
+.gsap-pin-section .btn {
+  color: #fff;
+}
+
+/* Hero title override — always white since it's on a dark image */
+.gsap-hero-title .line-inner {
+  color: #fff;
+}
+
+/* Override btn for parallax context */
+.gsap-pin-section .btn {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+.gsap-pin-section .btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
 }
 
 .solid-section {
